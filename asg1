@@ -27,8 +27,8 @@ int main()
     while (1) 
     {
         printf("Enter four values separated by dots ");
-        scanf("%d.%d.%d.%d", &a, &b, &c, &d);
-        if (is_valid_ip(a, b, c, d))
+        
+        if ((scanf("%d.%d.%d.%d", &a, &b, &c, &d)==4) && is_valid_ip(a, b, c, d) )
         {
             printf("Valid IP address: %d.%d.%d.%d\n", a, b, c, d);
 
