@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+#define CLASS_A(ip) ((ip >= 0) && (ip <= 127))
+#define CLASS_B(ip) ((ip >= 128) && (ip <= 191))
+#define CLASS_C(ip) ((ip >= 192) && (ip <= 223))
+#define CLASS_D(ip) ((ip >= 224) && (ip <= 239))
+#define CLASS_E(ip) ((ip >= 240) && (ip <= 255))
+
+bool is_valid_ip(int a, int b, int c, int d) 
+{
+    if ((a >= 0 && a <= 255) && (b >= 0 && b <= 255) && (c >= 0 && c <= 255) && (d >= 0 && d <= 255)) 
+    {
+        if ((a == 0 && b == 0 && c == 0 && d == 0) || (a == 255 && b == 255 && c == 255 && d == 255))
+        {
+            return false; 
+        }
+        return true;
+     }
+    return false;
+}
+
+int main() 
+{
+    int a, b, c, d;
+
+    while (1) 
+    {
+        printf("Enter four values separated by dots ");
+        scanf("%d.%d.%d.%d", &a, &b, &c, &d);
+        if (is_valid_ip(a, b, c, d))
+        {
+            printf("Valid IP address: %d.%d.%d.%d\n", a, b, c, d);
+
+            if (CLASS_A(a))
+            {
+                printf("Class - A IP address\n");
+            } 
+            else if (CLASS_B(a))
+            {
+                printf("Class - B IP address\n");
+            }
+            else if (CLASS_C(a)) 
+            {
+                printf("Class - C IP address\n");
+            } 
+            else if (CLASS_D(a))
+            {
+                printf("Class - D IP address\n");
+            }
+            else if (CLASS_E(a)) 
+            {
+                printf("Class - E IP address\n");
+            }
+
+            break; 
+        } 
+        else 
+        {
+            printf("Invalid IP address,Please try again\n");
+        }
+    }
+
+    return 0;
+}
